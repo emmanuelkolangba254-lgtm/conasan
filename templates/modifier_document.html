@@ -1,0 +1,129 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-primary text-white">
+
+<h3>
+
+✏ Modifier le document
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST"
+enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<div class="mb-3">
+
+<label>Titre</label>
+
+<input
+type="text"
+name="titre"
+value="{{ document.titre }}"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Description</label>
+
+<textarea
+name="description"
+class="form-control"
+rows="5">{{ document.description }}</textarea>
+
+</div>
+
+<div class="mb-3">
+
+<label>Catégorie</label>
+
+<input
+type="text"
+name="categorie"
+value="{{ document.categorie }}"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+{% if document.image %}
+
+<img src="{{ document.image.url }}"
+style="width:120px;">
+
+<br><br>
+
+{% endif %}
+
+<label>Nouvelle image</label>
+
+<input
+type="file"
+name="image"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Nouveau document</label>
+
+<input
+type="file"
+name="fichier"
+class="form-control">
+
+</div>
+
+<div class="form-check mb-3">
+
+<input
+type="checkbox"
+name="public"
+class="form-check-input"
+{% if document.public %}checked{% endif %}>
+
+<label class="form-check-label">
+
+Document public
+
+</label>
+
+</div>
+
+<button class="btn btn-primary">
+
+Mettre à jour
+
+</button>
+
+<a href="{% url 'dashboard_documentation' %}"
+class="btn btn-secondary">
+
+Retour
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

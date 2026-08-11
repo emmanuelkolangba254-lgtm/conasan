@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="py-5">
+
+    <!-- TITRE -->
+
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold text-success">
+            Documentation
+        </h1>
+
+        <p class="text-muted">
+            Rapports, études, guides et publications.
+        </p>
+
+    </div>
+
+
+    <!-- DOCUMENTS -->
+
+    <div class="row">
+
+        {% for document in documents %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow h-100 border-0">
+
+                <div class="card-body d-flex flex-column">
+
+                    <!-- TYPE -->
+
+                    <div class="mb-2">
+
+                        <span class="badge bg-success">
+                            {{ document.get_type_document_display }}
+                        </span>
+
+                    </div>
+
+
+                    <!-- TITRE -->
+
+                    <h5 class="fw-bold">
+                        {{ document.titre }}
+                    </h5>
+
+
+                    <!-- DESCRIPTION -->
+
+                    {% if document.description %}
+
+                    <p class="text-muted">
+                        {{ document.description }}
+                    </p>
+
+                    {% else %}
+
+                    <p class="text-muted">
+                        Document officiel de la CONASAN.
+                    </p>
+
+                    {% endif %}
+
+
+                    <!-- DATE -->
+
+                    <small class="text-muted mb-3">
+
+                        Publié le
+                        {{ document.date_creation|date:"d/m/Y" }}
+
+                    </small>
+
+
+                    <!-- BOUTON -->
+
+                    {% if document.fichier %}
+
+                    <div class="mt-auto">
+
+                        <a href="{{ document.fichier.url }}"
+                           target="_blank"
+                           class="btn btn-success">
+
+                            📄 Télécharger
+
+                        </a>
+
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <!-- AUCUN DOCUMENT -->
+
+        <div class="col-12">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body text-center py-5">
+
+                    <h5 class="text-muted">
+                        Aucun document disponible
+                    </h5>
+
+                    <p class="text-muted mb-0">
+                        Les documents seront ajoutés prochainement.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,238 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container-fluid py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <h2 class="text-success">
+            🏛 Gestion de la Gouvernance
+        </h2>
+
+        <div>
+
+            <a href="{% url 'ajouter_dirigeant' %}" class="btn btn-success">
+                ➕ Ajouter un dirigeant
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- ORGANIGRAMME -->
+
+    <!-- ORGANIGRAMME -->
+
+<div class="card shadow mb-4">
+
+    <div class="card-header bg-success text-white">
+        Organigramme officiel
+    </div>
+
+    <div class="card-body text-center">
+
+        {% if organigramme %}
+
+            <h5 class="fw-bold mb-3">
+                {{ organigramme.titre }}
+            </h5>
+
+            {% if organigramme.image_apercu %}
+
+                <a href="{{ organigramme.image_apercu.url }}" target="_blank">
+
+                    <img
+                        src="{{ organigramme.image_apercu.url }}"
+                        class="img-fluid rounded shadow"
+                        style="max-height:450px;"
+                        alt="{{ organigramme.titre }}"
+                    >
+
+                </a>
+
+                <hr>
+
+            {% endif %}
+
+            {% if organigramme.fichier %}
+
+                <a
+                    href="{{ organigramme.fichier.url }}"
+                    target="_blank"
+                    class="btn btn-outline-success"
+                >
+                    📄 Ouvrir l'organigramme
+                </a>
+
+            {% endif %}
+
+        {% else %}
+
+            <div class="alert alert-warning">
+                Aucun organigramme enregistré.
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+        
+                   
+
+    <!-- MEMBRES -->
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+
+            Membres de la Gouvernance
+
+        </div>
+
+        <div class="card-body">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-success">
+
+                <tr>
+
+                    <th>Photo</th>
+
+                    <th>Nom</th>
+
+                    <th>Fonction</th>
+
+                    <th>Téléphone</th>
+
+                    <th>Email</th>
+
+                    <th>Statut</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for d in dirigeants %}
+
+                <tr>
+
+                    <td width="90">
+
+                        {% if d.photo %}
+
+                            <img
+                                src="{{ d.photo.url }}"
+                                class="rounded-circle"
+                                style="width:70px;height:70px;object-fit:cover;">
+
+                        {% else %}
+
+                            <img
+                                src="/static/images/user.png"
+                                class="rounded-circle"
+                                style="width:70px;height:70px;">
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        <strong>{{ d.nom }}</strong>
+
+                    </td>
+
+                    <td>
+
+                        {{ d.fonction }}
+
+                    </td>
+
+                    <td>
+
+                        {{ d.telephone }}
+
+                    </td>
+
+                    <td>
+
+                        {{ d.email }}
+
+                    </td>
+
+                    <td>
+
+                        {% if d.actif %}
+
+                            <span class="badge bg-success">
+
+                                Actif
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge bg-danger">
+
+                                Inactif
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        <a
+                            href="{% url 'modifier_dirigeant' d.id %}"
+                            class="btn btn-primary btn-sm">
+
+                            Modifier
+
+                        </a>
+
+                        <a
+                            href="{% url 'supprimer_dirigeant' d.id %}"
+                            class="btn btn-danger btn-sm">
+
+                            Supprimer
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="7" class="text-center">
+
+                        Aucun dirigeant enregistré.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

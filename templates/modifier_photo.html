@@ -1,0 +1,135 @@
+{% extends "dashboard_base.html" %}
+
+{% block content %}
+
+<div class="container py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+            <h2 class="fw-bold text-success">
+                Modifier la photo
+            </h2>
+
+            <p class="text-muted mb-0">
+                Modifiez les informations de cette photo.
+            </p>
+        </div>
+
+        <a href="{% url 'dashboard_galerie' %}"
+           class="btn btn-outline-secondary">
+            ← Retour
+        </a>
+
+    </div>
+
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body p-4">
+
+            {% if photo.image %}
+
+            <div class="mb-4 text-center">
+
+                <img
+                    src="{{ photo.image.url }}"
+                    alt="{{ photo.titre }}"
+                    style="
+                        width:300px;
+                        height:200px;
+                        object-fit:cover;
+                        border-radius:12px;
+                    "
+                >
+
+            </div>
+
+            {% endif %}
+
+
+            <form method="POST"
+                  enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-bold">
+                        Titre
+                    </label>
+
+                    {{ form.titre }}
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-bold">
+                        Description
+                    </label>
+
+                    {{ form.description }}
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-bold">
+                        Catégorie
+                    </label>
+
+                    {{ form.categorie }}
+
+                </div>
+
+
+                <div class="mb-3">
+
+                    <label class="form-label fw-bold">
+                        Remplacer la photo
+                    </label>
+
+                    {{ form.image }}
+
+                </div>
+
+
+                <div class="form-check mb-4">
+
+                    {{ form.publier }}
+
+                    <label class="form-check-label">
+                        Publier cette photo
+                    </label>
+
+                </div>
+
+
+                <button type="submit"
+                        class="btn btn-success px-4">
+
+                    <i class="fas fa-save me-2"></i>
+                    Enregistrer les modifications
+
+                </button>
+
+
+                <a href="{% url 'dashboard_galerie' %}"
+                   class="btn btn-secondary">
+
+                    Annuler
+
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

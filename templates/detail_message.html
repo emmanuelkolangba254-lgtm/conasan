@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+
+<h2 class="text-success">
+    Message reçu
+</h2>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<p>
+<b>Nom :</b>
+{{ message.nom }}
+</p>
+
+<p>
+<b>Email :</b>
+{{ message.email }}
+</p>
+
+<p>
+<b>Sujet :</b>
+{{ message.sujet }}
+</p>
+
+<p>
+<b>Message :</b>
+{{ message.message }}
+</p>
+
+<hr>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<label>
+Réponse
+</label>
+
+<textarea
+name="reponse"
+class="form-control mb-3"
+rows="5">
+</textarea>
+
+<button
+class="btn btn-success">
+Répondre
+</button>
+
+</form>
+
+<hr>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<label>
+Transférer à :
+</label>
+
+<input
+type="text"
+name="transfert"
+class="form-control mb-3">
+
+<button
+class="btn btn-warning">
+Transférer
+</button>
+
+</form>
+
+<hr>
+
+<a
+href="{% url 'supprimer_message' message.id %}"
+class="btn btn-danger">
+
+Supprimer
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+<form method="post"
+      action="{% url 'supprimer_message' message.id %}">
+
+    {% csrf_token %}
+
+    <button
+        class="btn btn-danger">
+
+        Supprimer définitivement
+
+    </button>
+
+</form>
+{% endblock %}

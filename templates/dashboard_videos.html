@@ -1,0 +1,85 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<h2 class="text-success">
+🎥 Gestion des Vidéos
+</h2>
+
+<a href="{% url 'ajouter_video' %}" class="btn btn-success">
+➕ Ajouter une vidéo
+</a>
+
+</div>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<table class="table table-hover">
+
+<thead class="table-success">
+
+<tr>
+
+<th>Titre</th>
+
+<th>Vidéo</th>
+
+<th>Date</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for video in videos %}
+
+<tr>
+
+<td>{{ video.titre }}</td>
+
+<td>{{ video.fichier.name }}</td>
+
+<td>{{ video.date_creation }}</td>
+
+<td>
+
+<a href="{% url 'modifier_video' video.id %}" class="btn btn-primary btn-sm">
+Modifier
+</a>
+
+<a href="{% url 'supprimer_video' video.id %}" class="btn btn-danger btn-sm">
+Supprimer
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="4" class="text-center">
+Aucune vidéo.
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

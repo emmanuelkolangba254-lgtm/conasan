@@ -1,0 +1,348 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-5">
+
+    <h1 class="text-success mb-4">
+        Tableau de Bord CONASAN
+<a href="{% url 'utilisateurs' %}"
+class="btn btn-success">
+
+👥 Gestion des utilisateurs
+
+</a>    </h1>
+
+    <!-- NOTIFICATIONS -->
+
+    <div class="mb-4">
+
+        <button class="btn btn-warning position-relative">
+
+            🔔 Notifications
+
+            {% if nb_notifications > 0 %}
+
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+
+                {{ nb_notifications }}
+
+            </span>
+
+            {% endif %}
+
+        </button>
+
+    </div>
+
+    <!-- STATISTIQUES -->
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h2 class="text-success">
+                        {{ nb_programmes }}
+                    </h2>
+                    <p>Programmes</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h2 class="text-primary">
+                        {{ nb_actualites }}
+                    </h2>
+                    <p>Actualités</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h2 class="text-danger">
+                        {{ nb_structures }}
+                    </h2>
+                    <p>Structures</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h2 class="text-warning">
+                        {{ nb_partenaires }}
+                    </h2>
+                    <p>Partenaires</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card shadow border-0">
+                <div class="card-body text-center">
+                    <h2 class="text-dark">
+                        {{ nb_users }}
+                    </h2>
+                    <p>Utilisateurs</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- GRAPHIQUE -->
+
+    <hr class="my-5">
+
+    <h3 class="text-success mb-4">
+        Statistiques Générales
+    </h3>
+
+    <div class="card shadow p-4">
+
+        <canvas id="dashboardChart"></canvas>
+
+    </div>
+
+    <!-- NOTIFICATIONS -->
+
+    <hr class="my-5">
+
+    <h3 class="text-success">
+        Notifications Récentes
+    </h3>
+
+    <div class="card shadow mb-5">
+
+        <div class="card-body">
+
+            {% for notification in notifications %}
+
+            <div class="border-bottom pb-2 mb-2">
+
+                <a href="{% url 'detail_message' notification.id %}">
+
+                    <strong>
+                        {{ notification.titre }}
+                    </strong>
+
+                </a>
+
+                <br>
+
+                <small>
+                    {{ notification.message }}
+                </small>
+
+                <br>
+
+                <small class="text-muted">
+                    {{ notification.date_creation }}
+                </small>
+
+            </div>
+
+            {% empty %}
+
+            <p>
+                Aucune notification.
+            </p>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <!-- MESSAGES -->
+
+    <div class="row">
+
+        <div class="col-lg-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-success text-white">
+
+                    Messages récents
+
+                </div>
+
+                <div class="card-body">
+
+                    <table class="table table-sm">
+
+                        <thead>
+
+                            <tr>
+                                <th>Nom</th>
+                                <th>Sujet</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for c in messages_contact %}
+
+                            <tr>
+
+                                <td>
+                                    {{ c.nom }}
+                                </td>
+
+                                <td>
+                                    <a href="{% url 'detail_message' c.id %}">
+                                        {{ c.sujet }}
+                                    </a>
+                                </td>
+
+                            </tr>
+
+                            {% empty %}
+
+                            <tr>
+
+                                <td colspan="2">
+                                    Aucun message
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- COLONNE NOTIFICATIONS -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow">
+
+                <div class="card-header bg-primary text-white">
+
+                    Historique Notifications
+
+                </div>
+
+                <div class="card-body">
+
+                    <ul class="list-group">
+
+                        {% for n in notifications %}
+
+                        <li class="list-group-item">
+
+                            <strong>
+                                {{ n.titre }}
+                            </strong>
+
+                            <br>
+
+                            {{ n.message }}
+
+                        </li>
+
+                        {% empty %}
+
+                        <li class="list-group-item">
+
+                            Aucune notification
+
+                        </li>
+
+                        {% endfor %}
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const ctx = document.getElementById('dashboardChart');
+
+new Chart(ctx, {
+
+    type: 'bar',
+
+    data: {
+
+        labels: [
+            'Programmes',
+            'Actualités',
+            'Structures',
+            'Partenaires',
+            'Utilisateurs'
+        ],
+
+        datasets: [{
+
+            label: 'Statistiques CONASAN',
+
+            data: [
+                {{ nb_programmes }},
+                {{ nb_actualites }},
+                {{ nb_structures }},
+                {{ nb_partenaires }},
+                {{ nb_users }}
+            ],
+
+            backgroundColor: [
+                '#198754',
+                '#0d6efd',
+                '#dc3545',
+                '#ffc107',
+                '#6f42c1'
+            ],
+
+            borderWidth: 1
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        plugins: {
+
+            legend: {
+
+                display: false
+
+            }
+
+        }
+
+    }
+
+});
+
+</script>
+
+{% endblock %}

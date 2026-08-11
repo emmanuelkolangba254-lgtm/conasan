@@ -1,0 +1,133 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white">
+
+<h3>
+
+➕ Ajouter un document
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST"
+enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<div class="mb-3">
+
+<label>Titre</label>
+
+<input
+type="text"
+name="titre"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Catégorie</label>
+
+<select
+name="categorie"
+class="form-control">
+
+<option>Rapport</option>
+
+<option>Guide</option>
+
+<option>Procédure</option>
+
+<option>Convention</option>
+
+<option>Formulaire</option>
+
+<option>Autre</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label>Description</label>
+
+<textarea
+name="description"
+class="form-control"
+rows="5"></textarea>
+
+</div>
+
+<div class="mb-3">
+
+<label>Image</label>
+
+<input
+type="file"
+name="image"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Document</label>
+
+<input
+type="file"
+name="fichier"
+class="form-control"
+required>
+
+</div>
+
+<div class="form-check mb-3">
+
+<input
+type="checkbox"
+name="public"
+checked
+class="form-check-input">
+
+<label class="form-check-label">
+
+Document public
+
+</label>
+
+</div>
+
+<button class="btn btn-success">
+
+Enregistrer
+
+</button>
+
+<a href="{% url 'dashboard_documentation' %}"
+class="btn btn-secondary">
+
+Retour
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

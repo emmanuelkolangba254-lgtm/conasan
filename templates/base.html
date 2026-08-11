@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONASAN</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <style>
+
+        body{
+            background:#f4fff7;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* BARRE SUPERIEURE */
+        .top-bar{
+            background:#0a7d3b;
+            padding:10px 0;
+            color:white;
+        }
+
+        .top-bar a{
+            color:white;
+            text-decoration:none;
+        }
+
+        .top-right{
+            margin-top:5px;
+        }
+
+        .btn-top{
+            background:white;
+            color:#0a7d3b;
+            border:none;
+            border-radius:20px;
+            padding:5px 15px;
+            font-weight:bold;
+        }
+
+        .btn-top:hover{
+            background:#e9ecef;
+        }
+
+        /* NAVBAR */
+
+        .main-nav .navbar-nav{
+    display:flex;
+    flex-wrap:nowrap;
+    align-items:center;
+    gap:3px;
+}
+
+.main-nav .nav-link{
+    white-space:nowrap;
+    font-size:15px;
+    padding:10px 10px !important;
+}
+
+.navbar-brand{
+    margin-right:20px;
+    flex-shrink:0;
+}
+        .menu-btn{
+            color:#222 !important;
+            font-weight:600;
+            padding:10px 15px !important;
+            border-radius:25px;
+            transition:0.3s;
+        }
+
+        .menu-btn:hover{
+            background:#0a7d3b;
+            color:white !important;
+        }
+
+        .btn-custom{
+            background:#0a7d3b;
+            color:white;
+            border:none;
+            border-radius:25px;
+            padding:12px 25px;
+        }
+
+        .btn-custom:hover{
+            background:#065c2a;
+            color:white;
+        }
+
+        footer{
+            background:#0a7d3b;
+            color:white;
+            text-align:center;
+            padding:20px;
+            margin-top:60px;
+        }
+.programmes-container {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.programme-card {
+    min-width: 220px;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+    transition: 0.3s;
+}
+
+.programme-card:hover {
+    transform: translateY(-5px);
+}
+
+.programme-card img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+.programme-card h6 {
+    font-weight: bold;
+    min-height: 50px; }
+.stats-section {
+    background:
+        linear-gradient(
+            rgba(8,61,119,0.85),
+            rgba(8,61,119,0.85)
+        ),
+        url('https://images.unsplash.com/photo-1551288049-bebda4e38f71');
+
+    background-size: cover;
+    background-position: center;
+
+    border-radius: 25px;
+
+    padding: 12px 20px; /* réduit la hauteur */
+
+    margin: 50px 0;
+}
+.stat-card {
+    color: white;
+    text-align: center;
+    padding: 5px;
+}
+
+.stat-icon {
+    font-size: 24px;
+    margin-bottom: 4px;
+    color: #9fd3ff;
+}
+
+.stat-card h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 2px;
+}
+
+.stat-card p {
+    font-size: 11px;
+    margin: 0;
+    line-height: 1.2;
+}
+.news-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.08);
+    transition: 0.3s;
+    height: 100%;
+}
+
+.news-card:hover {
+    transform: translateY(-6px);
+}
+
+.news-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+.actualites-container{
+    display:flex;
+    gap:15px;
+    overflow-x:auto;
+}
+
+.news-card{
+    min-width:230px;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,.1);
+    flex-shrink:0;
+}
+
+.news-card img{
+    width:100%;
+    height:130px;
+    object-fit:cover;
+}
+
+.partner-box{
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+}
+
+.partner-box img{
+    width:140px;
+    margin:10px;
+    max-width:100%;
+}
+.gallery-img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:15px;
+    transition:0.3s;
+    cursor:pointer;
+}
+
+.gallery-img:hover{
+    transform:scale(1.03);
+}
+.testimonial-card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    height:100%;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.testimonial-card:hover{
+    transform:translateY(-5px);
+}
+
+.quote{
+    font-size:50px;
+    color:#0a7d3b;
+    font-weight:bold;
+    line-height:1;
+}
+
+.testimonial-card p{
+    color:#555;
+    margin-top:10px;
+}
+
+.testimonial-card h6{
+    margin-top:15px;
+    color:#0a7d3b;
+    font-weight:bold;
+}
+.video-testimonial{
+    background:white;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    position:relative;
+    transition:.3s;
+}
+
+.video-testimonial:hover{
+    transform:translateY(-5px);
+}
+
+.video-testimonial img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.play-btn{
+    position:absolute;
+    top:40%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:rgba(10,125,59,.9);
+    color:white;
+    font-size:28px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+}
+.footer-conasan{
+    background:#0a7d3b;
+    color:white;
+    padding:50px 0 20px;
+    margin-top:80px;
+}
+
+.footer-conasan h4,
+.footer-conasan h5{
+    margin-bottom:15px;
+    font-weight:bold;
+}
+
+.footer-conasan a{
+    color:white;
+    text-decoration:none;
+}
+
+.footer-conasan a:hover{
+    color:#cfeedd;
+}
+
+.social-icons a{
+    display:inline-flex;
+    width:40px;
+    height:40px;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    background:white;
+    color:#0a7d3b;
+    font-weight:bold;
+    margin-right:10px;
+}
+
+/* ACTUALITES */
+
+.actualites-container{
+    display:flex;
+    gap:15px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+}
+
+.actualites-container::-webkit-scrollbar{
+    display:none;
+}
+
+.news-card{
+    min-width:260px;
+    border-radius:15px;
+    overflow:hidden;
+    background:white;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+    flex-shrink:0;
+}
+
+.news-card img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+}
+
+/* PARTENAIRES */
+
+.partner-slider{
+    height:380px;
+    overflow:hidden;
+    position:relative;
+}
+
+.partner-item{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.partner-item img{
+    max-width:180px;
+    max-height:90px;
+    object-fit:contain;
+}
+
+.programmes-container{
+    display:flex;
+    gap:15px;
+    overflow:hidden;
+    scroll-behavior:smooth;
+}
+.partner-marquee{
+    overflow:hidden;
+    width:100%;
+}
+
+.partner-track{
+    display:flex;
+    gap:30px;
+    animation:defilement 20s linear infinite;
+}
+
+.partner-logo img{
+    height:70px;
+    object-fit:contain;
+}
+
+@keyframes defilement{
+
+    from{
+        transform:translateX(100%);
+    }
+
+    to{
+        transform:translateX(-100%);
+    }
+
+}
+#searchBox{
+
+width:340px;
+
+border-radius:30px;
+
+padding:12px 20px;
+
+border:2px solid #198754;
+
+transition:.3s;
+
+}
+
+#searchBox:focus{
+
+box-shadow:0 0 12px rgba(25,135,84,.35);
+
+outline:none;
+
+}
+
+#searchResults{
+
+border-radius:15px;
+
+margin-top:8px;
+
+background:white;
+
+}
+
+#searchResults a{
+
+transition:.2s;
+
+}
+
+#searchResults a:hover{
+
+background:#198754;
+
+color:white;
+
+}
+    </style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+</head>
+
+<body>
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>CONASAN</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet/dist/leaflet.css">
+
+<style>
+
+body{
+background:#f4fff7;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+/*==========================
+BARRE SUPERIEURE
+==========================*/
+
+.top-bar{
+
+background:#0b7b43;
+
+padding:8px 0;
+
+color:white;
+
+font-size:15px;
+
+}
+
+.top-bar a{
+
+color:white;
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+.top-bar a:hover{
+
+color:#ffe082;
+
+}
+
+.top-icons{
+
+display:flex;
+
+align-items:center;
+
+justify-content:flex-end;
+
+gap:18px;
+
+}
+
+.top-icons i{
+
+font-size:20px;
+
+cursor:pointer;
+
+}
+
+.search-icon{
+
+cursor:pointer;
+
+}
+
+.language-icon{
+
+cursor:pointer;
+
+}
+
+.account-icon{
+
+cursor:pointer;
+
+}
+
+#searchContainer{
+
+display:none;
+
+position:absolute;
+
+right:40px;
+
+top:55px;
+
+width:320px;
+
+z-index:9999;
+
+}
+
+#searchBox{
+
+border-radius:30px;
+
+border:2px solid #198754;
+
+padding:10px 18px;
+
+}
+
+#searchResults{
+
+display:none;
+
+background:white;
+
+border-radius:15px;
+
+margin-top:5px;
+
+max-height:300px;
+
+overflow:auto;
+
+}
+
+/*==========================
+NAVBAR
+==========================*/
+
+.main-nav{
+
+background:white;
+
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+
+}
+
+.navbar-brand{
+
+font-size:30px;
+
+font-weight:bold;
+
+color:#0b7b43!important;
+
+}
+
+.menu-btn{
+
+padding:10px 18px!important;
+
+font-weight:600;
+
+border-radius:25px;
+
+transition:.3s;
+
+}
+
+.menu-btn:hover{
+
+background:#0b7b43;
+
+color:white!important;
+
+}
+
+footer{
+
+background:#0b7b43;
+
+color:white;
+
+padding:40px 0;
+
+margin-top:80px;
+
+}
+.top-icons{
+
+display:flex;
+
+gap:25px;
+
+align-items:center;
+
+font-size:22px;
+
+}
+
+.top-icons a{
+
+color:white;
+
+transition:.3s;
+
+}
+
+.top-icons a:hover{
+
+color:#ffd54f;
+
+}
+
+#aiSearch{
+
+display:none;
+
+position:absolute;
+
+right:20px;
+
+top:60px;
+
+width:350px;
+
+background:white;
+
+padding:20px;
+
+border-radius:20px;
+
+box-shadow:0 10px 30px rgba(0,0,0,.2);
+
+z-index:9999;
+
+}
+
+#languageMenu{
+
+display:none;
+
+position:absolute;
+
+right:20px;
+
+top:60px;
+
+background:white;
+
+padding:20px;
+
+border-radius:15px;
+
+box-shadow:0 10px 20px rgba(0,0,0,.2);
+
+z-index:9999;
+
+}
+
+#languageMenu a{
+
+display:block;
+
+padding:8px;
+
+color:#333;
+
+text-decoration:none;
+
+}
+
+#languageMenu a:hover{
+
+background:#198754;
+
+color:white;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!--==========================
+BARRE SUPERIEURE
+===========================-->
+<div class="top-bar">
+
+<div class="container">
+
+<div class="d-flex justify-content-between align-items-center">
+
+<div>
+
+<i class="fa-solid fa-phone"></i>
+
+ (+236) 75116610/72686921
+
+&nbsp;&nbsp;&nbsp;
+
+<i class="fa-solid fa-envelope"></i>
+
+ndawatchakano@yahoo.fr/elkanandawatcha@yahoo.fr
+
+</div>
+
+<div class="top-icons">
+
+    <a href="https://wa.me/23674691731?text=Bonjour%20CONASAN"
+       target="_blank">
+
+        <i class="fab fa-whatsapp"></i>
+
+    </a>
+
+    <a href="https://facebook.com/conasan"
+       target="_blank">
+
+        <i class="fab fa-facebook-f"></i>
+
+    </a>
+
+    <a href="#" id="searchButton">
+
+        <i class="fas fa-search"></i>
+
+    </a>
+
+    <a href="#" id="langButton">
+
+        <i class="fas fa-globe"></i>
+
+    </a>
+
+{% if user.is_authenticated %}
+
+<a href="{% url 'dashboard' %}" title="Tableau de bord">
+    <i class="fas fa-user-circle"></i>
+</a>
+{% else %}
+
+<a href="{% url 'connexion' %}" title="Se connecter">
+    <i class="fas fa-user-circle"></i>
+</a>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div id="aiSearch">
+
+    <input
+        id="searchBox"
+        class="form-control"
+        placeholder="Posez une question à l'assistant IA...">
+
+    <div id="searchResults"></div>
+
+</div>
+<div id="languageMenu">
+
+    <a href="/i18n/setlang/?language=fr">🇫🇷 Français</a>
+
+    <a href="/i18n/setlang/?language=en">🇬🇧 English</a>
+
+    <a href="/i18n/setlang/?language=es">🇪🇸 Español</a>
+
+    <a href="/i18n/setlang/?language=pt">🇵🇹 Português</a>
+
+    <a href="/i18n/setlang/?language=ar">🇸🇦 العربية</a>
+
+    <a href="/i18n/setlang/?language=zh-hans">🇨🇳 中文</a>
+    <a href="/i18n/setlang/?language=sg">🇨🇫 Sängö</a>
+</div>
+<!-- Barre recherche IA -->
+
+<div id="searchContainer">
+
+<input
+id="searchBox"
+class="form-control"
+placeholder="Rechercher ou poser une question...">
+
+<div
+id="searchResults"
+class="list-group shadow">
+</div>
+
+</div>
+
+<!-- NAVBAR -->
+{% load static %}
+<nav class="navbar navbar-expand-lg main-nav">
+
+    <div class="container">
+
+      <a class="navbar-brand d-flex align-items-center"
+   href="{% url 'home' %}">
+
+    <img src="{% static 'images/logo1.png' %}"
+         alt="Logo CONASAN"
+         width="80"
+         class="me-2">
+
+    <span>CONASAN</span>
+
+</a>
+
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link menu-btn" href="{% url 'home' %}">
+                        Accueil
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-btn" href="{% url 'apropos' %}">
+                        À propos
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-btn" href="{% url 'programmes' %}">
+                        Nos Programmes
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-btn" href="{% url 'structures' %}">
+                        Nos Structures
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-btn" href="{% url 'gouvernance' %}">
+                        Gouvernance
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-btn" href="{% url 'actualites' %}">
+                        Actualités
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-btn" href="{% url 'partenaires' %}">
+                        Partenaires
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-btn" href="{% url 'documentation' %}">
+                        Documentation
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link menu-btn" href="{% url 'contact' %}">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- CONTENU -->
+
+<div class="container mt-4">
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer-conasan">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-4">
+<img src="{% static 'images/logo1.png' %}"
+         alt="Logo CONASAN"
+         width="80"
+         class="me-2">
+
+    <span>CONASAN</span>
+
+                <p>
+                    Conférence Nationale des Structures de Santé.
+                    Nous œuvrons pour une santé accessible,
+                    équitable et durable.
+                </p>
+            </div>
+
+            <div class="col-md-2">
+                <h5>Navigation</h5>
+
+                <ul class="list-unstyled">
+
+                    <li><a href="{% url 'home' %}">Accueil</a></li>
+
+                    <li><a href="{% url 'apropos' %}">À propos</a></li>
+
+                    <li><a href="{% url 'programmes' %}">Programmes</a></li>
+
+                    <li><a href="{% url 'actualites' %}">Actualités</a></li>
+
+                </ul>
+            </div>
+
+            <div class="col-md-3">
+                <h5>Contacts</h5>
+
+                <p>📞 +236 70 00 00 00</p>
+
+                <p>✉ contact@conasan.org</p>
+
+                <p>📍 Bangui, RCA</p>
+            </div>
+
+            <div class="col-md-3">
+
+                <h5>Suivez-nous</h5>
+
+                <div class="social-icons">
+
+                    <a href="#">f</a>
+
+                    <a href="#">▶</a>
+
+                    <a href="#">in</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+
+            © 2026 CONASAN - Tous droits réservés
+
+        </div>
+
+    </div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+    const actualites =
+        document.querySelector(".actualites-container");
+
+    if(actualites){
+
+        setInterval(() => {
+
+            actualites.scrollLeft += 1;
+
+            if(
+                actualites.scrollLeft >=
+                actualites.scrollWidth -
+                actualites.clientWidth
+            ){
+                actualites.scrollLeft = 0;
+            }
+
+        }, 20);
+
+    }
+
+});
+
+</script>
+<script>
+
+function autoScroll(selector,speed){
+
+    const container=document.querySelector(selector);
+
+    if(!container) return;
+
+    setInterval(()=>{
+
+        container.scrollLeft+=1;
+
+        if(
+            container.scrollLeft >=
+            container.scrollWidth -
+            container.clientWidth
+        ){
+            container.scrollLeft=0;
+        }
+
+    },speed);
+
+}
+
+document.addEventListener("DOMContentLoaded",function(){
+
+    autoScroll(".programmes-container",20);
+
+    autoScroll(".actualites-container",25);
+
+});
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</script>
+<script>
+
+const searchBox =
+document.getElementById("searchBox");
+
+const searchResults =
+document.getElementById("searchResults");
+
+if(searchBox){
+
+searchBox.addEventListener(
+"keyup",
+function(){
+
+const texte=this.value;
+
+if(texte.length<2){
+
+searchResults.style.display="none";
+searchResults.innerHTML="";
+return;
+
+}
+
+fetch("/api/recherche/?q="+encodeURIComponent(texte))
+
+.then(response=>response.json())
+
+.then(data=>{
+
+searchResults.innerHTML="";
+
+if(data.length===0){
+
+searchResults.innerHTML=`
+
+<div class="list-group-item text-muted">
+
+🤖 Aucun résultat.
+
+Voulez-vous poser cette question à l'assistant IA ?
+
+</div>
+
+`;
+
+searchResults.style.display="block";
+
+return;
+
+}
+
+data.forEach(function(item){
+
+searchResults.innerHTML+=`
+
+<a
+href="${item.url}"
+class="list-group-item list-group-item-action">
+
+<strong>${item.type}</strong>
+
+<br>
+
+${item.nom}
+
+</a>
+
+`;
+
+});
+
+searchResults.style.display="block";
+
+});
+
+});
+
+document.addEventListener(
+"click",
+function(e){
+
+if(!searchBox.contains(e.target)){
+
+searchResults.style.display="none";
+
+}
+
+});
+
+}
+
+const searchButton=document.getElementById("searchButton");
+
+const langButton=document.getElementById("langButton");
+
+const aiSearch=document.getElementById("aiSearch");
+
+const languageMenu=document.getElementById("languageMenu");
+
+searchButton.onclick=function(e){
+
+e.preventDefault();
+
+aiSearch.style.display=
+
+aiSearch.style.display=="block"
+
+?
+
+"none"
+
+:
+
+"block";
+
+languageMenu.style.display="none";
+
+}
+
+langButton.onclick=function(e){
+
+e.preventDefault();
+
+languageMenu.style.display=
+
+languageMenu.style.display=="block"
+
+?
+
+"none"
+
+:
+
+"block";
+
+aiSearch.style.display="none";
+
+}
+
+document.onclick=function(e){
+
+if(
+
+!e.target.closest("#aiSearch")
+
+&&
+
+!e.target.closest("#searchButton")
+
+){
+
+aiSearch.style.display="none";
+
+}
+
+if(
+
+!e.target.closest("#languageMenu")
+
+&&
+
+!e.target.closest("#langButton")
+
+){
+
+languageMenu.style.display="none";
+
+}
+
+}
+</script>
+<script>
+
+const verses=[
+
+"Je suis l'Éternel qui te guérit.<br><b>Exode 15:26</b>",
+
+"Car rien n'est impossible à Dieu.<br><b>Luc 1:37</b>",
+
+"L'Éternel est mon berger.<br><b>Psaume 23:1</b>",
+
+"Je puis tout par celui qui me fortifie.<br><b>Philippiens 4:13</b>",
+
+"Ne crains rien, car je suis avec toi.<br><b>Esaïe 41:10</b>",
+
+"Bien-aimé, je souhaite que tu prospères et sois en bonne santé.<br><b>3 Jean 1:2</b>"
+
+];
+
+let i=0;
+
+setInterval(function(){
+
+    i++;
+
+    if(i>=verses.length){
+
+        i=0;
+
+    }
+
+    document.getElementById("verseText").innerHTML=verses[i];
+
+},30000);
+
+</script>
+</body>
+</html>

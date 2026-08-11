@@ -1,0 +1,100 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-5">
+
+<h2 class="text-success mb-4">
+Gestion des utilisateurs
+</h2>
+
+<a href="#" class="btn btn-success mb-3">
+➕ Nouvel utilisateur
+</a>
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-success">
+
+<tr>
+
+<th>Nom</th>
+
+<th>Email</th>
+
+<th>Rôle</th>
+
+<th>État</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for u in utilisateurs %}
+
+<tr>
+
+<td>{{ u.username }}</td>
+
+<td>{{ u.email }}</td>
+
+<td>{{ u.profil.get_role_display }}</td>
+
+<td>
+
+{% if u.profil.actif %}
+
+<span class="badge bg-success">
+Actif
+</span>
+
+{% else %}
+
+<span class="badge bg-danger">
+Bloqué
+</span>
+
+{% endif %}
+
+</td>
+
+<td>
+
+<a href="#"
+class="btn btn-primary btn-sm">
+
+Modifier
+
+</a>
+
+<a href="#"
+class="btn btn-warning btn-sm">
+
+Mot de passe
+
+</a>
+
+<a href="#"
+class="btn btn-danger btn-sm">
+
+Supprimer
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

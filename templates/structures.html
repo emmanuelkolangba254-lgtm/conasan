@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="py-5 text-center">
+
+    <h1 class="fw-bold text-success">
+        Nos Structures Sanitaires
+    </h1>
+
+    <p class="lead">
+        Un réseau national de structures de santé
+        au service des populations de République Centrafricaine.
+    </p>
+
+</section>
+
+<!-- STATISTIQUES -->
+<section class="stats-section">
+
+    <div class="row">
+
+        <div class="col-md-3 col-6 stat-card">
+            <div class="stat-icon">📍</div>
+            <h2>20</h2>
+            <p>Préfectures</p>
+        </div>
+
+        <div class="col-md-3 col-6 stat-card">
+            <div class="stat-icon">🏥</div>
+            <h2>150+</h2>
+            <p>Structures</p>
+        </div>
+
+        <div class="col-md-3 col-6 stat-card">
+            <div class="stat-icon">👨‍⚕️</div>
+            <h2>2000+</h2>
+            <p>Agents</p>
+        </div>
+
+        <div class="col-md-3 col-6 stat-card">
+            <div class="stat-icon">👨‍👩‍👧‍👦</div>
+            <h2>1M+</h2>
+            <p>Bénéficiaires</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CARTE -->
+<section class="my-5">
+
+    <div class="partner-box">
+
+        <h3 class="text-success">
+            Carte Interactive des Structures
+        </h3>
+
+        <p>
+            Localisation des structures sanitaires
+            et géolocalisation du visiteur.
+        </p>
+
+        <div id="map"
+             style="
+             height:600px;
+             border-radius:20px;
+             ">
+        </div>
+
+    </div>
+
+</section>
+
+<!-- STRUCTURES -->
+<section class="my-5">
+
+    <h2 class="text-success mb-4">
+        Structures Principales
+    </h2>
+
+    <div class="programmes-container">
+
+        {% for structure in structures %}
+
+        <div class="programme-card">
+
+            {% if structure.photo %}
+            <img src="{{ structure.photo.url }}">
+            {% else %}
+            <img src="https://via.placeholder.com/300x180">
+            {% endif %}
+
+            <div class="p-3">
+
+                <h6>
+    <a href="{% url 'detail_structure' structure.id %}"
+       class="text-success text-decoration-none">
+
+        {{ structure.nom }}
+
+    </a>
+</h6>
+
+                <p class="small text-muted">
+                    {{ structure.ville }}
+                </p>
+
+                <p class="small">
+                    {{ structure.telephone }}
+                </p>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="alert alert-info">
+
+            Aucune structure disponible.
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<!-- LEAFLET -->
+
+<link rel="stylesheet"
+href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+</script>
+
+<!-- SCRIPT -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    var map = L.map('map').setView(
+        [4.3733, 18.5628],
+        6
+    );
+
+    L.tileLayer(
+        'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+        {
+            attribution: '&copy; OpenStreetMap'
+        }
+    ).addTo(map);
+
+    // ==========================
+    // POSITION DU VISITEUR
+    // ==========================
+
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(
+
+            function(position) {
+
+                var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+
+                L.marker([lat, lon])
+
+                .addTo(map)
+
+                .bindPopup(
+                    "📍 Votre position actuelle"
+                )
+
+                .openPopup();
+
+            },
+
+            function(error) {
+
+                console.log(
+                    "Accès GPS refusé."
+                );
+
+            }
+
+        );
+
+    }
+
+    // ==========================
+    // STRUCTURES
+    // ==========================
+
+    let markers = [];
+
+    function loadStructures() {
+
+        fetch("/api/structures/")
+
+        .then(response => response.json())
+
+        .then(data => {
+
+            markers.forEach(
+                marker => map.removeLayer(marker)
+            );
+
+            markers = [];
+
+            data.forEach(function(structure){
+
+                if(
+                    structure.latitude &&
+                    structure.longitude
+                ){
+
+          let marker = L.marker([
+    structure.latitude,
+    structure.longitude
+])
+
+.addTo(map)
+
+.bindPopup(
+`
+<b>${structure.nom}</b><br>
+
+${structure.ville}<br>
+
+${structure.telephone}<br><br>
+
+<a href="/structure/${structure.id}/"
+class="btn btn-success btn-sm">
+Voir détails
+</a>
+
+<br><br>
+
+<a target="_blank"
+href="https://www.google.com/maps/dir/?api=1&destination=${structure.latitude},${structure.longitude}">
+📍 Itinéraire
+</a>
+`
+);          
+    
+   
+
+                    markers.push(marker);
+
+                }
+
+            });
+
+        });
+
+    }
+
+    loadStructures();
+
+    setInterval(
+        loadStructures,
+        5000
+    );
+
+});
+
+</script>
+
+{% endblock %}

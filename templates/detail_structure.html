@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="container py-5">
+
+    <div class="row">
+
+        <div class="col-lg-5">
+
+            {% if structure.photo %}
+            <img src="{{ structure.photo.url }}"
+                 class="img-fluid rounded shadow">
+            {% endif %}
+
+        </div>
+
+        <div class="col-lg-7">
+
+            <h1 class="text-success">
+                {{ structure.nom }}
+            </h1>
+
+            <hr>
+
+            <p>
+                <strong>Préfecture :</strong>
+                {{ structure.prefecture }}
+            </p>
+
+            <p>
+                <strong>Ville :</strong>
+                {{ structure.ville }}
+            </p>
+
+            <p>
+                <strong>Adresse :</strong>
+                {{ structure.adresse }}
+            </p>
+
+            <p>
+                <strong>Téléphone :</strong>
+                {{ structure.telephone }}
+            </p>
+
+            <p>
+                <strong>Email :</strong>
+                {{ structure.email }}
+            </p>
+
+            <p>
+                <strong>Description :</strong>
+                {{ structure.description }}
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

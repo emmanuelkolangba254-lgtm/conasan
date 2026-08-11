@@ -1,0 +1,33 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-4">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-success text-white">
+
+            <h3>📩 Messages</h3>
+
+        </div>
+
+        <div class="card-body text-center">
+
+            <h4>Gestion des messages</h4>
+
+            <p>
+                Les messages envoyés depuis le formulaire Contact apparaîtront ici.
+            </p>
+
+            <a href="/admin/contenu/contact/" class="btn btn-success">
+                Ouvrir les messages
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

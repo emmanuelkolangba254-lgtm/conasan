@@ -1,0 +1,416 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- HERO -->
+
+<div class="hero-section rounded overflow-hidden">
+
+    <div class="overlay">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-7">
+
+                <h1 class="display-4 fw-bold text-white">
+                    Agir ensemble pour la santé intégrale
+                </h1>
+
+                <p class="lead text-white mt-4">
+
+                    La CONASAN œuvre pour la santé,
+                    la dignité et le bien-être des populations.
+
+                </p>
+
+                <div class="mt-4">
+
+                    <a href="#" class="btn btn-light me-2">
+                        Découvrir nos actions
+                    </a>
+
+                    <a href="#" class="btn btn-success">
+                        Nous contacter
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+.hero-section{
+
+    background-image:url("https://images.unsplash.com/photo-1584515933487-779824d29309");
+
+    background-size:cover;
+    background-position:center;
+
+    min-height:500px;
+
+    margin-top:20px;
+}
+
+.overlay{
+
+    background:rgba(0,40,120,0.70);
+
+    min-height:500px;
+
+    padding:80px 50px;
+}
+
+/* CARTES */
+
+.info-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    height:100%;
+
+    box-shadow:0px 2px 15px rgba(0,0,0,0.1);
+}
+
+</style>
+
+<!-- MISSION / VALEURS / VISION / ENGAGEMENT -->
+
+<div class="row mt-5 g-4">
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-primary">🎯</h1>
+
+            <h4 class="text-primary">
+                Notre Mission
+            </h4>
+
+            <p class="text-dark">
+
+                Améliorer durablement la santé
+                des populations.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-primary">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-success">❤️</h1>
+
+            <h4 class="text-success">
+                Nos Valeurs
+            </h4>
+
+            <p class="text-dark">
+
+                Solidarité, respect,
+                professionnalisme et engagement.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-success">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-warning">👁️</h1>
+
+            <h4 class="text-warning">
+                Notre Vision
+            </h4>
+
+            <p class="text-dark">
+
+                Une société plus saine,
+                équitable et inclusive.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-warning">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-danger">🤝</h1>
+
+            <h4 class="text-danger">
+                Notre Engagement
+            </h4>
+
+            <p class="text-dark">
+
+                Servir les communautés
+                avec efficacité et transparence.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-danger">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- NOS PROGRAMMES -->
+<section class="mt-5 mb-5">
+
+    <div class="text-center mb-5">
+        <h2 class="fw-bold text-success">NOS PROGRAMMES</h2>
+        <p class="text-muted">
+            Découvrez les principaux domaines d'intervention de la CONASAN.
+        </p>
+    </div>
+
+    <div class="row g-4">
+
+        <!-- Programme 1 -->
+        <div class="col-md-4">
+            <div class="card shadow border-0 h-100">
+
+                <img src="https://via.placeholder.com/600x350"
+                     class="card-img-top">
+
+                <div class="card-body text-center">
+
+                    <div class="mb-3 fs-1 text-success">
+                        ❤️
+                    </div>
+
+                    <h4>Santé communautaire</h4>
+
+                    <p class="text-muted">
+                        Renforcement de l'accès aux soins et sensibilisation des communautés.
+                    </p>
+
+                    <a href="{% url 'programmes' %}"
+                       class="btn btn-success">
+                       En savoir plus
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Programme 2 -->
+        <div class="col-md-4">
+            <div class="card shadow border-0 h-100">
+
+                <img src="https://via.placeholder.com/600x350"
+                     class="card-img-top">
+
+                <div class="card-body text-center">
+
+                    <div class="mb-3 fs-1 text-warning">
+                        🥗
+                    </div>
+
+                    <h4>Nutrition</h4>
+
+                    <p class="text-muted">
+                        Lutte contre la malnutrition et amélioration de l'alimentation.
+                    </p>
+
+                    <a href="{% url 'programmes' %}"
+                       class="btn btn-success">
+                       En savoir plus
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Programme 3 -->
+        <div class="col-md-4">
+            <div class="card shadow border-0 h-100">
+
+                <img src="https://via.placeholder.com/600x350"
+                     class="card-img-top">
+
+                <div class="card-body text-center">
+
+                    <div class="mb-3 fs-1 text-danger">
+                        🩺
+                    </div>
+
+                    <h4>VIH/SIDA & Tuberculose</h4>
+
+                    <p class="text-muted">
+                        Prévention, prise en charge et accompagnement des patients.
+                    </p>
+
+                    <a href="{% url 'programmes' %}"
+                       class="btn btn-success">
+                       En savoir plus
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Programme 4 -->
+        <div class="col-md-4">
+            <div class="card shadow border-0 h-100">
+
+                <img src="https://via.placeholder.com/600x350"
+                     class="card-img-top">
+
+                <div class="card-body text-center">
+
+                    <div class="mb-3 fs-1 text-primary">
+                        👶
+                    </div>
+
+                    <h4>Santé maternelle</h4>
+
+                    <p class="text-muted">
+                        Protection de la mère et de l'enfant avant et après la naissance.
+                    </p>
+
+                    <a href="{% url 'programmes' %}"
+                       class="btn btn-success">
+                       En savoir plus
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Programme 5 -->
+        <div class="col-md-4">
+            <div class="card shadow border-0 h-100">
+
+                <img src="https://via.placeholder.com/600x350"
+                     class="card-img-top">
+
+                <div class="card-body text-center">
+
+                    <div class="mb-3 fs-1 text-info">
+                        🧠
+                    </div>
+
+                    <h4>Santé mentale</h4>
+
+                    <p class="text-muted">
+                        Accompagnement psychologique et soutien psychosocial.
+                    </p>
+
+                    <a href="{% url 'programmes' %}"
+                       class="btn btn-success">
+                       En savoir plus
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Programme 6 -->
+        <div class="col-md-4">
+            <div class="card shadow border-0 h-100">
+
+                <img src="https://via.placeholder.com/600x350"
+                     class="card-img-top">
+
+                <div class="card-body text-center">
+
+                    <div class="mb-3 fs-1 text-secondary">
+                        🎓
+                    </div>
+
+                    <h4>Renforcement des capacités</h4>
+
+                    <p class="text-muted">
+                        Formation des professionnels et amélioration des services.
+                    </p>
+
+                    <a href="{% url 'programmes' %}"
+                       class="btn btn-success">
+                       En savoir plus
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<!-- STATISTIQUES -->
+<section class="stats-section mt-5 mb-5">
+
+    <div class="container">
+
+        <div class="row text-center">
+
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <h2 class="counter">150+</h2>
+                    <p>Structures sanitaires</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <h2 class="counter">1M+</h2>
+                    <p>Bénéficiaires</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <h2 class="counter">8</h2>
+                    <p>Diocèses</p>
+                </div>
+            </div>
+
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <h2 class="counter">20+</h2>
+                    <p>Partenaires</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

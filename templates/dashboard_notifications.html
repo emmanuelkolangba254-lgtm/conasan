@@ -1,0 +1,51 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<h2 class="text-success mb-4">
+
+🔔 Notifications
+
+</h2>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<ul class="list-group">
+
+{% for n in notifications %}
+
+<li class="list-group-item">
+
+<strong>{{ n.titre }}</strong>
+
+<br>
+
+{{ n.message }}
+
+<span class="float-end text-muted">
+
+{{ n.date_creation }}
+
+</span>
+
+</li>
+
+{% empty %}
+
+<li class="list-group-item">
+
+Aucune notification.
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+</div>
+
+{% endblock %}

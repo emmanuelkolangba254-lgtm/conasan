@@ -1,0 +1,100 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-4">
+
+<h2 class="text-success mb-4">
+🏥 Gestion des Structures Sanitaires
+</h2>
+
+<a href="{% url 'ajouter_structure' %}"
+class="btn btn-success mb-3">
+
+➕ Nouvelle Structure
+
+</a>
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-success">
+
+<tr>
+
+<th>Nom</th>
+
+<th>Téléphone</th>
+
+<th>Ville</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for s in structures %}
+
+<tr>
+
+<td>
+
+{{ s.nom }}
+
+</td>
+
+<td>
+
+{{ s.telephone }}
+
+</td>
+
+<td>
+
+{{ s.ville }}
+
+</td>
+
+<td>
+
+<a href="{% url 'modifier_structure' s.id %}"
+class="btn btn-primary btn-sm">
+
+Modifier
+
+</a>
+
+<a href="{% url 'supprimer_structure' s.id %}"
+class="btn btn-danger btn-sm">
+
+Supprimer
+
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="4">
+
+Aucune structure enregistrée.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

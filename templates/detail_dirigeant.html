@@ -1,0 +1,61 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-5">
+
+<div class="card shadow">
+
+<div class="card-body text-center">
+
+{% if dirigeant.photo %}
+
+<img src="{{ dirigeant.photo.url }}"
+class="rounded-circle mb-3"
+style="width:180px;height:180px;object-fit:cover;">
+
+{% endif %}
+
+<h2>
+
+{{ dirigeant.nom }}
+
+</h2>
+
+<h5 class="text-success">
+
+{{ dirigeant.fonction }}
+
+</h5>
+
+<hr>
+
+<p>
+
+{{ dirigeant.biographie|linebreaks }}
+
+</p>
+
+<p>
+
+<strong>Téléphone :</strong>
+
+{{ dirigeant.telephone }}
+
+</p>
+
+<p>
+
+<strong>Email :</strong>
+
+{{ dirigeant.email }}
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

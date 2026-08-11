@@ -1,0 +1,94 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<h2 class="text-success">
+🖼 Gestion de la Galerie
+</h2>
+
+<a href="{% url 'ajouter_photo' %}" class="btn btn-success">
+➕ Ajouter une photo
+</a>
+
+</div>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<table class="table table-hover">
+
+<thead class="table-success">
+
+<tr>
+
+<th>Aperçu</th>
+
+<th>Titre</th>
+
+<th>Description</th>
+
+<th>Date</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for photo in galerie %}
+
+<tr>
+
+<td width="100">
+
+<img src="{{ photo.image.url }}"
+style="width:80px;height:60px;object-fit:cover;">
+
+</td>
+
+<td>{{ photo.titre }}</td>
+
+<td>{{ photo.description|truncatewords:10 }}</td>
+
+<td>{{ photo.date_creation }}</td>
+
+<td>
+
+<a href="{% url 'modifier_photo' photo.id %}" class="btn btn-primary btn-sm">
+Modifier
+</a>
+
+<a href="{% url 'supprimer_photo' photo.id %}" class="btn btn-danger btn-sm">
+Supprimer
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="5" class="text-center">
+Aucune photo.
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

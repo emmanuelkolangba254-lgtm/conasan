@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="py-5">
+
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold text-success">
+            CONTACTEZ-NOUS
+        </h1>
+
+        <p class="lead text-muted">
+            Nous sommes à votre écoute.
+        </p>
+
+    </div>
+
+    <div class="row">
+
+        <!-- FORMULAIRE -->
+
+        <div class="col-lg-7">
+
+            <div class="card shadow border-0">
+
+                <div class="card-body">
+
+               {% if messages %}
+
+    {% for message in messages %}
+
+        <div class="alert alert-success">
+
+            {{ message }}
+
+        </div>
+
+    {% endfor %}
+
+{% endif %}
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <div class="mb-3">
+
+        <label>Nom complet</label>
+
+        <input
+            type="text"
+            name="nom"
+            class="form-control"
+            required>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Email</label>
+
+        <input
+            type="email"
+            name="email"
+            class="form-control"
+            required>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Sujet</label>
+
+        <input
+            type="text"
+            name="sujet"
+            class="form-control"
+            required>
+
+    </div>
+
+    <div class="mb-3">
+
+        <label>Message</label>
+
+        <textarea
+            name="message"
+            rows="6"
+            class="form-control"
+            required></textarea>
+
+    </div>
+
+    <button
+        type="submit"
+        class="btn btn-success">
+
+        Envoyer
+
+    </button>
+
+</form>
+                       
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- INFOS -->
+
+        <div class="col-lg-5">
+
+            <div class="partner-box">
+
+                <h4 class="text-success">
+                    CONASAN
+                </h4>
+
+                <hr>
+
+                <p>
+                    📍 Bangui, République Centrafricaine
+                </p>
+
+                <p>
+                    ☎ +236 75116610/72686921
+                </p>
+
+                <p>
+                    ✉ dawatchakano@yahoo.fr/elkanandawatcha@yahoo.fr
+                </p>
+
+                <p>
+                    🌍 www.conasan.org
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

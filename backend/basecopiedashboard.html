@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+<div class="row">
+
+<!-- SIDEBAR -->
+
+<div class="col-lg-2 bg-dark text-white min-vh-100 p-4">
+
+<h3 class="mb-4">
+CONASAN
+</h3>
+
+<hr>
+
+<a href="{% url 'dashboard' %}"
+class="btn btn-dark w-100 text-start mb-2">
+
+🏠 Tableau de bord
+
+</a>
+
+<a href="{% url 'utilisateurs' %}"
+class="btn btn-dark w-100 text-start mb-2">
+
+👥 Utilisateurs
+
+</a>
+
+<a href="{% url 'dashboard_structures' %}"
+class="list-group-item list-group-item-action">
+
+🏥 Structures
+
+</a>
+
+<a href="{% url 'dashboard_programmes' %}" class="btn btn-dark w-100 text-start mb-2">
+
+📂 Programmes
+
+<a href="{% url 'dashboard_actualites' %}">
+📰 Actualités
+</a>
+<li class="nav-item">
+
+<a href="{% url 'dashboard_apropos' %}" class="nav-link">
+
+ℹ Gestion À propos
+
+</a>
+
+</li>
+
+<a href="/admin/contenu/contact/"
+class="btn btn-dark w-100 text-start mb-2">
+
+📩 Messages
+
+</a>
+
+<a href="#"
+class="btn btn-dark w-100 text-start mb-2">
+
+📊 Statistiques
+
+</a>
+
+<a href="#"
+class="btn btn-dark w-100 text-start mb-2">
+
+🤖 Assistant IA
+
+</a>
+
+<a href="#"
+class="btn btn-dark w-100 text-start">
+
+⚙ Paramètres
+
+</a>
+
+</div>
+
+<!-- CONTENU -->
+
+<div class="col-lg-10 p-4">
+
+{% block dashboard_content %}
+
+{% endblock %}
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,111 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-4">
+
+<h2 class="text-success mb-4">
+📖 Gestion de la page À propos
+</h2>
+
+<a href="{% url 'ajouter_apropos' %}"
+class="btn btn-success mb-4">
+
+➕ Ajouter une section
+
+</a>
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-success">
+
+<tr>
+
+<th>Image</th>
+
+<th>Titre</th>
+
+<th>Mission</th>
+
+<th>Vision</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for a in apropos %}
+
+<tr>
+
+<td width="120">
+
+{% if a.image %}
+<img src="{{ a.image.url }}"
+style="width:100px;height:70px;object-fit:cover;">
+{% endif %}
+
+</td>
+
+<td>
+
+{{ a.titre }}
+
+</td>
+
+<td>
+
+{{ a.mission|truncatewords:10 }}
+
+</td>
+
+<td>
+
+{{ a.vision|truncatewords:10 }}
+
+</td>
+
+<td>
+
+<a href="{% url 'modifier_apropos' a.id %}"
+class="btn btn-primary btn-sm">
+
+Modifier
+
+</a>
+
+<a href="{% url 'supprimer_apropos' a.id %}"
+class="btn btn-danger btn-sm">
+
+Supprimer
+
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="5">
+
+Aucune information disponible.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

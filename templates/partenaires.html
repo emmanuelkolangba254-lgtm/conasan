@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}
+Nos Partenaires - CONASAN
+{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+
+<section class="py-5 bg-success text-white">
+<div class="container text-center">
+
+    <h1 class="display-4 fw-bold">
+        Nos Partenaires
+    </h1>
+
+    <p class="lead mb-0">
+        Les organisations qui accompagnent la CONASAN
+        dans ses missions.
+    </p>
+
+</div>
+</section>
+
+<!-- PARTENAIRES -->
+
+<section class="py-5">
+
+<div class="container">
+
+    <div class="text-center mb-5">
+
+        <h2 class="fw-bold text-success">
+            NOS PARTENAIRES
+        </h2>
+
+        <p class="text-muted">
+            Découvrez les organisations qui soutiennent
+            et accompagnent les actions de la CONASAN.
+        </p>
+
+    </div>
+
+
+    <div class="row justify-content-center g-4">
+
+        {% for partenaire in partenaires %}
+
+        <div class="col-lg-4 col-md-6 col-sm-10">
+
+            <div class="card border-0 shadow-sm h-100">
+
+                <div class="card-body text-center p-4">
+
+                    <!-- LOGO -->
+                    {% if partenaire.logo %}
+
+                    <div class="mb-4">
+
+                        <img
+                            src="{{ partenaire.logo.url }}"
+                            alt="Logo {{ partenaire.nom }}"
+                            class="img-fluid"
+                            style="
+                                width: 100%;
+                                height: 160px;
+                                object-fit: contain;
+                            "
+                        >
+
+                    </div>
+
+                    {% else %}
+
+                    <div
+                        class="d-flex align-items-center justify-content-center bg-light rounded mb-4"
+                        style="height:160px;"
+                    >
+
+                        <span class="text-muted">
+                            Aucun logo disponible
+                        </span>
+
+                    </div>
+
+                    {% endif %}
+
+
+                    <!-- NOM -->
+                    <h4 class="fw-bold text-success mb-3">
+
+                        {{ partenaire.nom }}
+
+                    </h4>
+
+
+                    <!-- SITE WEB -->
+                    {% if partenaire.site_web %}
+
+                    <a
+                        href="{{ partenaire.site_web }}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn btn-success"
+                    >
+
+                        🌐 Visiter le site
+
+                    </a>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12">
+
+            <div class="alert alert-info text-center py-4">
+
+                <h5 class="fw-bold">
+                    Aucun partenaire
+                </h5>
+
+                <p class="mb-0">
+                    Aucun partenaire n'est actuellement enregistré.
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</section>
+
+{% endblock %}
+

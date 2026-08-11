@@ -1,0 +1,67 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<h2 class="text-success mb-4">
+
+🌍 Gestion des Traductions
+
+</h2>
+
+<div class="alert alert-success">
+
+Les langues du site seront administrées ici.
+
+</div>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<table class="table">
+
+<thead>
+
+<tr>
+
+<th>Langue</th>
+
+<th>Statut</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Français</td>
+
+<td><span class="badge bg-success">Actif</span></td>
+
+<td><button class="btn btn-primary btn-sm">Modifier</button></td>
+
+</tr>
+
+<tr>
+
+<td>English</td>
+
+<td><span class="badge bg-secondary">Bientôt</span></td>
+
+<td><button class="btn btn-secondary btn-sm">Configurer</button></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+{% endblock %}

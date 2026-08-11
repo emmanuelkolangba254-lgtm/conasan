@@ -1,0 +1,92 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-success text-white">
+
+<h3>
+
+➕ Ajouter un partenaire
+
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST"
+enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<div class="mb-3">
+
+<label>Nom</label>
+
+<input
+type="text"
+name="nom"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Description</label>
+
+<textarea
+name="description"
+class="form-control"
+rows="5"></textarea>
+
+</div>
+
+<div class="mb-3">
+
+<label>Site Web</label>
+
+<input
+type="url"
+name="site_web"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Logo</label>
+
+<input
+type="file"
+name="logo"
+class="form-control">
+
+</div>
+
+<button class="btn btn-success">
+
+Enregistrer
+
+</button>
+
+<a href="{% url 'dashboard_partenaires' %}"
+class="btn btn-secondary">
+
+Retour
+
+</a>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

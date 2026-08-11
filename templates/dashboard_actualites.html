@@ -1,0 +1,111 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-4">
+
+<h2 class="text-success mb-4">
+📰 Gestion des Actualités
+</h2>
+
+<a href="{% url 'ajouter_actualite' %}"
+class="btn btn-success mb-3">
+
+➕ Nouvelle actualité
+
+</a>
+
+<table class="table table-hover table-bordered">
+
+<thead class="table-success">
+
+<tr>
+
+<th>Image</th>
+
+<th>Titre</th>
+
+<th>Catégorie</th>
+
+<th>Date</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for a in actualites %}
+
+<tr>
+
+<td width="120">
+
+{% if a.image %}
+<img src="{{ a.image.url }}"
+style="width:100px;height:70px;object-fit:cover;">
+{% endif %}
+
+</td>
+
+<td>
+
+{{ a.titre }}
+
+</td>
+
+<td>
+
+{{ a.categorie }}
+
+</td>
+
+<td>
+
+{{ a.date_publication }}
+
+</td>
+
+<td>
+
+<a href="{% url 'modifier_actualite' a.id %}"
+class="btn btn-primary btn-sm">
+
+Modifier
+
+</a>
+
+<a href="{% url 'supprimer_actualite' a.id %}"
+class="btn btn-danger btn-sm">
+
+Supprimer
+
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="5">
+
+Aucune actualité.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}

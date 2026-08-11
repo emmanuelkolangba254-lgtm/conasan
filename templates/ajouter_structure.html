@@ -1,0 +1,92 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container mt-4">
+
+<h2 class="text-success mb-4">
+
+➕ Ajouter une Structure Sanitaire
+
+</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<div class="mb-3">
+
+<label>Nom</label>
+
+<input
+type="text"
+name="nom"
+class="form-control"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label>Ville</label>
+
+<input
+type="text"
+name="ville"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Téléphone</label>
+
+<input
+type="text"
+name="telephone"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Latitude</label>
+
+<input
+type="text"
+name="latitude"
+class="form-control">
+
+</div>
+
+<div class="mb-3">
+
+<label>Longitude</label>
+
+<input
+type="text"
+name="longitude"
+class="form-control">
+
+</div>
+
+<button class="btn btn-success">
+
+Enregistrer
+
+</button>
+
+<a
+href="{% url 'dashboard_structures' %}"
+class="btn btn-secondary">
+
+Retour
+
+</a>
+
+</form>
+
+</div>
+
+{% endblock %}o
+

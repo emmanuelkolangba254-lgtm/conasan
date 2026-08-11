@@ -1,0 +1,284 @@
+{% extends "base.html" %}
+
+{% block title %}
+À propos - CONASAN
+{% endblock %}
+
+{% block content %}
+
+<section class="py-5 bg-light">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<div class="col-lg-6">
+
+<h1 class="display-5 fw-bold text-success mb-4">
+
+{% if contenu %}
+{{ contenu.titre }}
+{% else %}
+À propos de la CONASAN
+{% endif %}
+
+</h1>
+
+{% if contenu %}
+<p class="lead">
+
+{{ contenu.description|linebreaks }}
+
+</p>
+{% else %}
+
+<p class="lead">
+
+Aucune information disponible.
+
+</p>
+
+{% endif %}
+
+</div>
+
+<div class="col-lg-6 text-center">
+
+{% if contenu.image %}
+
+<img
+src="{{ contenu.image.url }}"
+class="img-fluid rounded shadow-lg"
+alt="CONASAN">
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<section class="py-5">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-6">
+
+<div class="card shadow border-0 h-100">
+
+<div class="card-body">
+
+<h2 class="text-success">
+
+🎯 Notre Mission
+
+</h2>
+
+<hr>
+
+{% if contenu %}
+
+<p>
+
+{{ contenu.mission|linebreaks }}
+
+</p>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-6">
+
+<div class="card shadow border-0 h-100">
+
+<div class="card-body">
+
+<h2 class="text-success">
+
+👁 Notre Vision
+
+</h2>
+
+<hr>
+
+{% if contenu %}
+
+<p>
+
+{{ contenu.vision|linebreaks }}
+
+</p>
+
+{% endif %}
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<section class="py-5 bg-white">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="card shadow text-center h-100">
+
+<div class="card-body">
+
+<h2 class="text-success">
+
+❤️
+
+</h2>
+
+<h4>
+
+Valeurs
+
+</h4>
+
+<p>
+
+{% if contenu %}
+{{ contenu.valeurs|linebreaks }}
+{% endif %}
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-4">
+
+<div class="card shadow text-center h-100">
+
+<div class="card-body">
+
+<h2 class="text-success">
+
+🏥
+
+</h2>
+
+<h4>
+
+Objectifs
+
+</h4>
+
+<p>
+
+{% if contenu %}
+{{ contenu.objectifs|linebreaks }}
+{% endif %}
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="col-md-4">
+
+<div class="card shadow text-center h-100">
+
+<div class="card-body">
+
+<h2 class="text-success">
+
+🌍
+
+</h2>
+
+<h4>
+
+Engagement
+
+</h4>
+
+<p>
+
+{% if contenu %}
+{{ contenu.engagement|linebreaks }}
+{% endif %}
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<section class="py-5 bg-success text-white">
+
+<div class="container text-center">
+
+<h2>
+
+Notre engagement envers la population centrafricaine
+
+</h2>
+
+<p class="mt-4">
+
+La Coordination Nationale Catholique de la Santé œuvre pour une meilleure qualité
+des soins, un accès équitable aux services de santé et un renforcement durable
+du système sanitaire.
+
+</p>
+
+</div>
+
+</section>
+
+{% endblock %}

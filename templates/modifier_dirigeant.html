@@ -1,0 +1,152 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-4">
+
+<div class="card shadow">
+
+<div class="card-header bg-primary text-white">
+
+<h3>
+✏ Modifier un dirigeant
+</h3>
+
+</div>
+
+<div class="card-body">
+
+<form method="POST" enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<div class="mb-3">
+
+<label class="form-label">
+Nom
+</label>
+
+<input
+type="text"
+name="nom"
+class="form-control"
+value="{{ dirigeant.nom }}"
+required>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+Fonction
+</label>
+
+<input
+type="text"
+name="fonction"
+class="form-control"
+value="{{ dirigeant.fonction }}">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+Téléphone
+</label>
+
+<input
+type="text"
+name="telephone"
+class="form-control"
+value="{{ dirigeant.telephone }}">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+Email
+</label>
+
+<input
+type="email"
+name="email"
+class="form-control"
+value="{{ dirigeant.email }}">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+Ordre d'affichage
+</label>
+
+<input
+type="number"
+name="ordre"
+class="form-control"
+value="{{ dirigeant.ordre }}">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+Photo actuelle
+</label>
+
+<br>
+
+{% if dirigeant.photo %}
+
+<img
+src="{{ dirigeant.photo.url }}"
+style="width:120px;height:120px;object-fit:cover;"
+class="rounded shadow mb-3">
+
+{% else %}
+
+<p class="text-muted">
+Aucune photo
+</p>
+
+{% endif %}
+
+<input
+type="file"
+name="photo"
+class="form-control">
+
+</div>
+
+<div class="mt-4">
+
+<button
+type="submit"
+class="btn btn-primary">
+
+💾 Mettre à jour
+
+</button>
+
+<a
+href="{% url 'dashboard_gouvernance' %}"
+class="btn btn-secondary">
+
+Retour
+
+</a>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+{% endblock %}

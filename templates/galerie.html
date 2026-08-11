@@ -1,0 +1,41 @@
+<div class="container py-5">
+
+    <div class="row">
+
+        {% for photo in photos %}
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="card shadow">
+
+                <img src="{{ photo.image.url }}"
+                     class="card-img-top"
+                     style="height:250px;object-fit:cover;">
+
+                <div class="card-body">
+
+                    <h5>{{ photo.titre }}</h5>
+
+                    <small class="text-muted">
+                        {{ photo.categorie }}
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="text-center py-5">
+
+            <h4>Aucune photo disponible.</h4>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>

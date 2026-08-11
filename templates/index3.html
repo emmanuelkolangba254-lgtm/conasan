@@ -1,0 +1,586 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- HERO -->
+
+<div class="hero-section rounded overflow-hidden">
+
+    <div class="overlay">
+
+        <div class="row align-items-center">
+
+            <div class="col-md-7">
+
+                <h1 class="display-4 fw-bold text-white">
+                    Agir ensemble pour la santé intégrale
+                </h1>
+
+                <p class="lead text-white mt-4">
+
+                    La CONASAN œuvre pour la santé,
+                    la dignité et le bien-être des populations.
+
+                </p>
+
+                <div class="mt-4">
+
+                    <a href="#" class="btn btn-light me-2">
+                        Découvrir nos actions
+                    </a>
+
+                    <a href="#" class="btn btn-success">
+                        Nous contacter
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<style>
+
+.hero-section{
+
+    background-image:url("https://images.unsplash.com/photo-1584515933487-779824d29309");
+
+    background-size:cover;
+    background-position:center;
+
+    min-height:500px;
+
+    margin-top:20px;
+}
+
+.overlay{
+
+    background:rgba(0,40,120,0.70);
+
+    min-height:500px;
+
+    padding:80px 50px;
+}
+
+/* CARTES */
+
+.info-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    height:100%;
+
+    box-shadow:0px 2px 15px rgba(0,0,0,0.1);
+}
+
+</style>
+
+<!-- MISSION / VALEURS / VISION / ENGAGEMENT -->
+
+<div class="row mt-5 g-4">
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-primary">🎯</h1>
+
+            <h4 class="text-primary">
+                Notre Mission
+            </h4>
+
+            <p class="text-dark">
+
+                Améliorer durablement la santé
+                des populations.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-primary">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-success">❤️</h1>
+
+            <h4 class="text-success">
+                Nos Valeurs
+            </h4>
+
+            <p class="text-dark">
+
+                Solidarité, respect,
+                professionnalisme et engagement.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-success">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-warning">👁️</h1>
+
+            <h4 class="text-warning">
+                Notre Vision
+            </h4>
+
+            <p class="text-dark">
+
+                Une société plus saine,
+                équitable et inclusive.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-warning">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-danger">🤝</h1>
+
+            <h4 class="text-danger">
+                Notre Engagement
+            </h4>
+
+            <p class="text-dark">
+
+                Servir les communautés
+                avec efficacité et transparence.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-danger">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- NOS PROGRAMMES -->
+<section class="mt-5 mb-5">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-success">NOS PROGRAMMES</h2>
+        <p class="text-muted">
+            Découvrez nos principaux domaines d'intervention.
+        </p>
+    </div>
+
+    <div class="programmes-container">
+
+        <!-- Carte 1 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>❤️ Santé communautaire</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+        <!-- Carte 2 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>🥗 Nutrition</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+        <!-- Carte 3 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>🩺 VIH/SIDA</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+        <!-- Carte 4 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>👶 Santé maternelle</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+        <!-- Carte 5 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>🧠 Santé mentale</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+        <!-- Carte 6 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>🎓 Renforcement</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+    </div>
+                    
+</section>
+<section class="stats-section">
+
+    <div class="row">
+
+        <div class="col-md-3 col-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🏥
+                </div>
+
+                <h2>150+</h2>
+
+                <p>Structures sanitaires</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 col-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👨‍👩‍👧‍👦
+                </div>
+
+                <h2>1M+</h2>
+
+                <p>Bénéficiaires</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 col-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🇨🇫
+                </div>
+
+                <h2>+8</h2>
+
+                <p>Diocèses</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3 col-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🤝
+                </div>
+
+                <h2>20+</h2>
+
+                <p>Partenaires</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+                   
+<section class="mt-5">
+
+    <div class="row">
+
+        <!-- ACTUALITES -->
+        <div class="col-lg-8">
+
+            <h3 class="fw-bold text-success mb-4">
+                NOS ACTUALITÉS
+            </h3>
+<p class="text-muted">
+            Suivez les dernières activités et événements de la CONASAN.
+        </p>
+
+            <div class="actualites-container">
+
+                <div class="news-card">
+                    <img src="https://via.placeholder.com/300x180">
+
+                    <div class="p-3">
+                        <small class="text-success">
+                            15 Juin 2026
+                        </small>
+
+                        <h6>
+                            Campagne de vaccination
+                        </h6>
+
+                        <a href="#" class="btn btn-success btn-sm">
+                            Lire +
+                        </a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <img src="https://via.placeholder.com/300x180">
+
+                    <div class="p-3">
+                        <small class="text-success">
+                            10 Juin 2026
+                        </small>
+
+                        <h6>
+                            Formation du personnel
+                        </h6>
+
+                        <a href="#" class="btn btn-success btn-sm">
+                            Lire +
+                        </a>
+                    </div>
+                </div>
+
+                <div class="news-card">
+                    <img src="https://via.placeholder.com/300x180">
+
+                    <div class="p-3">
+                        <small class="text-success">
+                            05 Juin 2026
+                        </small>
+
+                        <h6>
+                            Lutte contre la malnutrition
+                        </h6>
+
+                        <a href="#" class="btn btn-success btn-sm">
+                            Lire +
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- PARTENAIRES -->
+        <div class="col-lg-4">
+
+            <h3 class="fw-bold text-success mb-4">
+                NOS PARTENAIRES
+            </h3>
+
+            <div class="partner-box">
+
+                <img src="https://via.placeholder.com/150x80?text=UNICEF">
+
+                <img src="https://via.placeholder.com/150x80?text=OMS">
+
+                <img src="https://via.placeholder.com/150x80?text=USAID">
+
+                <img src="https://via.placeholder.com/150x80?text=UE">
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- GALERIE -->
+
+<section class="mt-5">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-success">
+            GALERIE PHOTOS
+        </h2>
+
+        <p class="text-muted">
+            Quelques images de nos interventions.
+        </p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+            <img src="https://via.placeholder.com/400x300"
+                 class="gallery-img">
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <img src="https://via.placeholder.com/400x300"
+                 class="gallery-img">
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <img src="https://via.placeholder.com/400x300"
+                 class="gallery-img">
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <img src="https://via.placeholder.com/400x300"
+                 class="gallery-img">
+        </div>
+
+    </div>
+
+</section>
+<!-- TEMOIGNAGES -->
+
+<section class="mt-5 mb-5">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-success">
+            TÉMOIGNAGES
+        </h2>
+
+        <p class="text-muted">
+            Découvrez l'impact de nos actions à travers les témoignages des bénéficiaires.
+        </p>
+    </div>
+
+    <div class="row">
+
+        <!-- Témoignage texte -->
+
+        <div class="col-lg-4 mb-4">
+
+            <div class="testimonial-card">
+
+                <div class="quote">"</div>
+
+                <p>
+                    Grâce aux activités de la CONASAN,
+                    notre centre de santé dispose désormais
+                    de meilleurs équipements.
+                </p>
+
+                <h6>Jean Baptiste</h6>
+
+                <small>Responsable sanitaire</small>
+
+            </div>
+
+        </div>
+
+        <!-- Vidéo 1 -->
+
+        <div class="col-lg-4 mb-4">
+
+            <div class="video-testimonial">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=800"
+                    class="img-fluid"
+                    alt="Video">
+
+                <div class="play-btn">
+                    ▶
+                </div>
+
+                <div class="p-3">
+
+                    <h6 class="fw-bold">
+                        Témoignage vidéo
+                    </h6>
+
+                    <small>
+                        Vidéo ajoutée par l'administrateur
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Vidéo 2 -->
+
+        <div class="col-lg-4 mb-4">
+
+            <div class="video-testimonial">
+
+                <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800"
+                    class="img-fluid"
+                    alt="Video">
+
+                <div class="play-btn">
+                    ▶
+                </div>
+
+                <div class="p-3">
+
+                    <h6 class="fw-bold">
+                        Témoignage vidéo
+                    </h6>
+
+                    <small>
+                        Vidéo ajoutée par l'administrateur
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+{% endblock %}

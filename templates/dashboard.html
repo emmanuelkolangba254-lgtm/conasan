@@ -1,0 +1,463 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container-fluid py-4">
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+<h2 class="fw-bold text-success">
+
+📊 Tableau de Bord CONASAN
+
+</h2>
+
+<a href="{% url 'utilisateurs' %}" class="btn btn-success">
+
+👥 Gestion des utilisateurs
+
+</a>
+
+</div>
+
+<!-- NOTIFICATIONS -->
+
+<div class="mb-4">
+
+<button class="btn btn-warning position-relative">
+
+🔔 Notifications
+
+{% if nb_notifications > 0 %}
+
+<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+
+{{ nb_notifications }}
+
+</span>
+
+{% endif %}
+
+</button>
+
+</div>
+
+<!-- STATISTIQUES -->
+
+<div class="row g-4 mb-5">
+
+<div class="col-lg-2 col-md-4 col-6">
+
+<div class="card shadow border-0 h-100">
+
+<div class="card-body text-center">
+
+<div class="display-5 text-success">
+
+❤️
+
+</div>
+
+<h2 class="fw-bold text-success">
+
+{{ nb_programmes }}
+
+</h2>
+
+<p class="mb-0">
+
+Programmes
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-2 col-md-4 col-6">
+
+<div class="card shadow border-0 h-100">
+
+<div class="card-body text-center">
+
+<div class="display-5 text-primary">
+
+📰
+
+</div>
+
+<h2 class="fw-bold text-primary">
+
+{{ nb_actualites }}
+
+</h2>
+
+<p class="mb-0">
+
+Actualités
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-2 col-md-4 col-6">
+
+<div class="card shadow border-0 h-100">
+
+<div class="card-body text-center">
+
+<div class="display-5 text-danger">
+
+🏥
+
+</div>
+
+<h2 class="fw-bold text-danger">
+
+{{ nb_structures }}
+
+</h2>
+
+<p class="mb-0">
+
+Structures
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-2 col-md-4 col-6">
+
+<div class="card shadow border-0 h-100">
+
+<div class="card-body text-center">
+
+<div class="display-5 text-warning">
+
+🤝
+
+</div>
+
+<h2 class="fw-bold text-warning">
+
+{{ nb_partenaires }}
+
+</h2>
+
+<p class="mb-0">
+
+Partenaires
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-2 col-md-4 col-6">
+
+<div class="card shadow border-0 h-100">
+
+<div class="card-body text-center">
+
+<div class="display-5 text-dark">
+
+👥
+
+</div>
+
+<h2 class="fw-bold">
+
+{{ nb_users }}
+
+</h2>
+
+<p class="mb-0">
+
+Utilisateurs
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-lg-2 col-md-4 col-6">
+
+<div class="card shadow border-0 h-100 bg-success text-white">
+
+<div class="card-body text-center">
+
+<div class="display-5">
+
+📨
+
+</div>
+
+<h2 class="fw-bold">
+
+{{ messages_contact|length }}
+
+</h2>
+
+<p class="mb-0">
+
+Messages
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GRAPHIQUE -->
+
+<div class="card shadow border-0 mb-5">
+
+<div class="card-header bg-success text-white">
+
+📈 Statistiques Générales
+
+</div>
+
+<div class="card-body">
+
+<canvas id="dashboardChart"></canvas>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<!-- MESSAGES -->
+
+<div class="col-lg-6 mb-4">
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-success text-white">
+
+📩 Derniers Messages
+
+</div>
+
+<div class="card-body">
+
+<table class="table table-hover">
+
+<thead>
+
+<tr>
+
+<th>Nom</th>
+
+<th>Sujet</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for c in messages_contact %}
+
+<tr>
+
+<td>{{ c.nom }}</td>
+
+<td>
+
+<a href="{% url 'detail_message' c.id %}">
+
+{{ c.sujet }}
+
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="2">
+
+Aucun message.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- NOTIFICATIONS -->
+
+<div class="col-lg-6 mb-4">
+
+<div class="card shadow border-0">
+
+<div class="card-header bg-primary text-white">
+
+🔔 Dernières Notifications
+
+</div>
+
+<div class="card-body">
+
+<ul class="list-group">
+
+{% for n in notifications %}
+
+<li class="list-group-item">
+
+<strong>
+
+{{ n.titre }}
+
+</strong>
+
+<br>
+
+{{ n.message }}
+
+<br>
+
+<small class="text-muted">
+
+{{ n.date_creation }}
+
+</small>
+
+</li>
+
+{% empty %}
+
+<li class="list-group-item">
+
+Aucune notification.
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+const ctx=document.getElementById("dashboardChart");
+
+new Chart(ctx,{
+
+type:"bar",
+
+data:{
+
+labels:[
+
+"Programmes",
+
+"Actualités",
+
+"Structures",
+
+"Partenaires",
+
+"Utilisateurs"
+
+],
+
+datasets:[{
+
+label:"CONASAN",
+
+data:[
+
+{{ nb_programmes }},
+
+{{ nb_actualites }},
+
+{{ nb_structures }},
+
+{{ nb_partenaires }},
+
+{{ nb_users }}
+
+],
+
+backgroundColor:[
+
+"#198754",
+
+"#0d6efd",
+
+"#dc3545",
+
+"#ffc107",
+
+"#6f42c1"
+
+]
+
+}]
+
+},
+
+options:{
+
+responsive:true,
+
+plugins:{
+
+legend:{display:false}
+
+}
+
+}
+
+});
+
+</script>
+
+{% endblock %}

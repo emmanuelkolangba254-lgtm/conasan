@@ -1,0 +1,708 @@
+html
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- HERO -->
+
+<!-- HERO -->
+
+<div class="hero-section rounded overflow-hidden">
+
+    <div class="overlay">
+
+        <div class="row align-items-center">
+
+            <!-- Texte -->
+
+            <div class="col-lg-7">
+
+                <h1 class="display-4 fw-bold text-white">
+                    Agir ensemble pour la santé intégrale
+                </h1>
+
+                <p class="lead text-white mt-4">
+
+                    La CONASAN œuvre pour la santé,
+                    la dignité et le bien-être des populations.
+
+                </p>
+
+                <div class="mt-4">
+
+                    <a href="#" class="btn btn-light me-2">
+                        Découvrir nos actions
+                    </a>
+
+                    <a href="#" class="btn btn-success">
+                        Nous contacter
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- Image -->
+
+            <div class="col-lg-5 text-center">
+
+                <div class="hero-image-box">
+
+                    <img
+                        src="{% static 'images/vaccin.png' %}"
+                        class="hero-image"
+                        alt="Vaccination">
+
+                    <div class="verse-box">
+
+                        <div id="verseText">
+
+                            « Je suis l'Éternel qui te guérit. »
+                            <br>
+                            <strong>Exode 15:26</strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+                    
+<style>
+.hero-section{
+
+    background:linear-gradient(
+        rgba(0,70,120,.95),
+        rgba(0,70,120,.90)
+    );
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    margin-top:20px;
+
+}
+
+.overlay{
+
+    padding:70px;
+
+}
+
+.hero-image-box{
+
+    position:relative;
+
+}
+
+.hero-image{
+
+    width:100%;
+
+    max-width:470px;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.verse-box{
+
+    position:absolute;
+
+    bottom:20px;
+
+    left:20px;
+
+    right:20px;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(10px);
+
+    color:white;
+
+    border-radius:20px;
+
+    padding:20px;
+
+    font-size:18px;
+
+}
+
+.overlay{
+
+    background:rgba(0,40,120,0.70);
+
+    min-height:500px;
+
+    padding:80px 50px;
+}
+
+/* CARTES */
+
+.info-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:30px;
+
+    text-align:center;
+
+    height:100%;
+
+    box-shadow:0px 2px 15px rgba(0,0,0,0.1);
+}
+
+</style>
+
+<!-- MISSION / VALEURS / VISION / ENGAGEMENT -->
+
+<div class="row mt-5 g-4">
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-primary">🎯</h1>
+
+            <h4 class="text-primary">
+                Notre Mission
+            </h4>
+
+            <p class="text-dark">
+
+                Améliorer durablement la santé
+                des populations.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-primary">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-success">❤️</h1>
+
+            <h4 class="text-success">
+                Nos Valeurs
+            </h4>
+
+            <p class="text-dark">
+
+                Solidarité, respect,
+                professionnalisme et engagement.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-success">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-warning">👁️</h1>
+
+            <h4 class="text-warning">
+                Notre Vision
+            </h4>
+
+            <p class="text-dark">
+
+                Une société plus saine,
+                équitable et inclusive.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-warning">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-3">
+
+        <div class="info-card">
+
+            <h1 class="text-danger">🤝</h1>
+
+            <h4 class="text-danger">
+                Notre Engagement
+            </h4>
+
+            <p class="text-dark">
+
+                Servir les communautés
+                avec efficacité et transparence.
+
+            </p>
+
+            <a href="#" class="btn btn-outline-danger">
+                Voir plus
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- NOS PROGRAMMES -->
+<section class="mt-5 mb-5">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-success">NOS PROGRAMMES</h2>
+        <p class="text-muted">
+            Découvrez nos principaux domaines d'intervention.
+        </p>
+    </div>
+
+    <div class="programmes-container">
+
+        <!-- Carte 1 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>❤️ Santé communautaire</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+        <!-- Carte 2 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>🥗 Nutrition</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+        <!-- Carte 3 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>🩺 VIH/SIDA</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+        <!-- Carte 4 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>👶 Santé maternelle</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+        <!-- Carte 5 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>🧠 Santé mentale</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+        <!-- Carte 6 -->
+        <div class="programme-card">
+            <img src="https://via.placeholder.com/250x150">
+            <div class="p-3 text-center">
+                <h6>🎓 Renforcement</h6>
+                <a href="{% url 'programmes' %}" class="btn btn-success btn-sm">
+                    Voir +
+                </a>
+            </div>
+        </div>
+
+    </div>
+                    
+</section>
+<section class="stats-section">
+
+    <div class="row">
+
+  <!-- STATISTIQUES -->
+
+<div class="stats-section">
+
+    <div class="row text-center">
+
+        <!-- Structures -->
+
+        <div class="col-md-3 col-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🏥
+                </div>
+
+                <h2>{{ structures.count }}+</h2>
+
+                <p>Structures sanitaires</p>
+
+            </div>
+
+        </div>
+
+        <!-- Bénéficiaires -->
+
+        <div class="col-md-3 col-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    👨‍👩‍👧‍👦
+                </div>
+
+                <h2>1M+</h2>
+
+                <p>Bénéficiaires</p>
+
+            </div>
+
+        </div>
+
+        <!-- Diocèses -->
+
+        <div class="col-md-3 col-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ⛪
+                </div>
+
+                <h2>8</h2>
+
+                <p>Diocèses</p>
+
+            </div>
+
+        </div>
+
+        <!-- Partenaires -->
+
+        <div class="col-md-3 col-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🤝
+                </div>
+
+                <h2>{{ partenaires.count }}+</h2>
+
+                <p>Partenaires</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+                   
+<section class="mt-5">
+
+    <div class="row">
+
+        <!-- ACTUALITES -->
+        <div class="col-lg-8">
+
+            <h3 class="fw-bold text-success mb-4">
+                NOS ACTUALITÉS
+            </h3>
+<p class="text-muted">
+            Suivez les dernières activités et événements de la CONASAN.
+        </p>
+
+           <div class="actualites-container">
+
+    {% for actualite in actualites %}
+
+    <div class="news-card">
+
+        {% if actualite.image %}
+            <img src="{{ actualite.image.url }}" alt="{{ actualite.titre }}">
+        {% else %}
+            <img src="https://via.placeholder.com/300x180">
+        {% endif %}
+
+        <div class="p-3">
+
+            <small class="text-success">
+                {{ actualite.date_publication|date:"d M Y" }}
+            </small>
+
+            <h6>
+                {{ actualite.titre }}
+            </h6>
+
+            <a href="#" class="btn btn-success btn-sm">
+                Lire +
+            </a>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <p>Aucune actualité disponible.</p>
+
+    {% endfor %}
+
+</div>        
+
+            </div>
+
+        </div>
+
+        <!-- PARTENAIRES -->
+        <div class="col-lg-4">
+
+            <h3 class="fw-bold text-success mb-4">
+                NOS PARTENAIRES
+            </h3>
+
+            <div class="row">
+
+<div class="partner-box">
+
+{% for partenaire in partenaires %}
+
+<img src="{{ partenaire.logo.url }}"
+     alt="{{ partenaire.nom }}">
+
+{% endfor %}
+
+</div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- GALERIE -->
+
+<section class="mt-5">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-success">
+            GALERIE PHOTOS
+        </h2>
+
+        <p class="text-muted">
+            Quelques images de nos interventions.
+        </p>
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-3 mb-3">
+            <img src="https://via.placeholder.com/400x300"
+                 class="gallery-img">
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <img src="https://via.placeholder.com/400x300"
+                 class="gallery-img">
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <img src="https://via.placeholder.com/400x300"
+                 class="gallery-img">
+        </div>
+
+        <div class="col-md-3 mb-3">
+            <img src="https://via.placeholder.com/400x300"
+                 class="gallery-img">
+        </div>
+
+    </div>
+
+</section>
+<!-- TEMOIGNAGES -->
+
+<section class="mt-5 mb-5">
+
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-success">
+            TÉMOIGNAGES
+        </h2>
+
+        <p class="text-muted">
+            Découvrez l'impact de nos actions à travers les témoignages des béné
+ficiaires.
+        </p>
+    </div>
+
+    <div class="row">
+
+        <!-- Témoignage texte -->
+
+        <div class="col-lg-4 mb-4">
+
+            <div class="testimonial-card">
+
+                <div class="quote">"</div>
+
+                <p>
+                    Grâce aux activités de la CONASAN,
+                    notre centre de santé dispose désormais
+                    de meilleurs équipements.
+                </p>
+
+                <h6>Jean Baptiste</h6>
+
+                <small>Responsable sanitaire</small>
+
+            </div>
+
+        </div>
+
+        <!-- Vidéo 1 -->
+
+        <div class="col-lg-4 mb-4">
+
+            <div class="video-testimonial">
+
+                <img
+                    src="https://images.unsplash.com/photo-1517841905240-472988b
+abdf9?w=800"
+                    class="img-fluid"
+                    alt="Video">
+
+                <div class="play-btn">
+                    ▶
+                </div>
+
+                <div class="p-3">
+
+                    <h6 class="fw-bold">
+                        Témoignage vidéo
+                    </h6>
+
+                    <small>
+                        Vidéo ajoutée par l'administrateur
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Vidéo 2 -->
+
+        <div class="col-lg-4 mb-4">
+
+            <div class="video-testimonial">
+
+                <img
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b
+29330?w=800"
+                    class="img-fluid"
+                    alt="Video">
+
+                <div class="play-btn">
+                    ▶
+                </div>
+
+                <div class="p-3">
+
+                    <h6 class="fw-bold">
+                        Témoignage vidéo
+                    </h6>
+
+                    <small>
+                        Vidéo ajoutée par l'administrateur
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+<script>
+
+const verses=[
+
+"Je suis l'Éternel qui te guérit.<br><b>Exode 15:26</b>",
+
+"Car rien n'est impossible à Dieu.<br><b>Luc 1:37</b>",
+
+"L'Éternel est mon berger.<br><b>Psaume 23:1</b>",
+
+"Je puis tout par celui qui me fortifie.<br><b>Philippiens 4:13</b>",
+
+"Ne crains rien, car je suis avec toi.<br><b>Esaïe 41:10</b>",
+
+"Bien-aimé, je souhaite que tu prospères et sois en bonne santé.<br><b>3 Jean 1:2</b>"
+
+];
+
+let i=0;
+
+setInterval(function(){
+
+    i++;
+
+    if(i>=verses.length){
+
+        i=0;
+
+    }
+
+    document.getElementById("verseText").innerHTML=verses[i];
+
+},30000);
+
+</script>
+</section>
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "dashboard_base.html" %}
+
+{% block dashboard_content %}
+
+<div class="container py-4">
+
+<h2 class="mb-4 text-success">
+Gestion des Programmes
+</h2>
+
+<a href="{% url 'ajouter_programme' %}" class="btn btn-success mb-3">
+➕ Nouveau Programme
+</a>
+
+<table class="table table-bordered table-hover">
+
+<thead class="table-success">
+
+<tr>
+
+<th>Image</th>
+
+<th>Titre</th>
+
+<th>Description</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for programme in programmes %}
+
+<tr>
+
+<td width="120">
+
+{% if programme.image1 %}
+<img src="{{ programme.image1.url }}"
+style="width:100px;height:70px;object-fit:cover;">
+{% endif %}
+
+</td>
+
+<td>
+
+{{ programme.titre }}
+
+</td>
+
+<td>
+
+{{ programme.description|truncatewords:15 }}
+
+</td>
+
+<td>
+
+<a href="{% url 'modifier_programme' programme.id %}" class="btn btn-primary btn-sm">
+Modifier
+</a>
+
+<a href="{% url 'supprimer_programme' programme.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Supprimer ce programme ?');">
+Supprimer
+</a>
+
+</td>
+
+</tr>
+
+{% empty %}
+
+<tr>
+
+<td colspan="4">
+
+Aucun programme.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}
