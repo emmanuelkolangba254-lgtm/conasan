@@ -137,9 +137,6 @@ STATICFILES_DIRS = [
     BASE_DIR.parent / 'static',
 ]
 
-MEDIA_URL = '/media/'
-
-MEDIA_ROOT = BASE_DIR.parent / 'media'
 from django.utils.translation import gettext_lazy as _
 
 LANGUAGE_CODE = "fr"
@@ -168,25 +165,61 @@ BASE_DIR / "locale",
 
 ]
 # ==============================
-# SUPABASE STORAGE
+# STORAGE LOCAL / SUPABASE
 # ==============================
 
-STORAGES = {
-    "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-    },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-    },
-}
+AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID", default=None)
+AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY", default=None)
+AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME", default=None)
+AWS_S3_ENDPOINT_URL = env("AWS_S3_ENDPOINT_URL", default=None)
+AWS_S3_REGION_NAME = env("AWS_S3_REGION_NAME", default=None)
 
-AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
-AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
-AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
-AWS_S3_ENDPOINT_URL = env("AWS_S3_ENDPOINT_URL")
-AWS_S3_REGION_NAME = env("AWS_S3_REGION_NAME")
+USE_SUPABASE_STORAGE = all([
+    AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY,
+    AWS_STORAGE_BUCKET_NAME,
+    AWS_S3_ENDPOINT_URL,
+    AWS_S3_REGION_NAME,
+])
 
-AWS_QUERYSTRING_AUTH = False
-AWS_DEFAULT_ACL = None
+if USE_SUPABASE_STORAGE:
 
-MEDIA_URL = f"{AWS_S3_ENDPOINT_URL}/{AWS_STORAGE_BUCKET_NAME}/"
+    # Supabase S3 pour les opérations d'upload
+    AWS_QUERYSTRING_AUTH = False
+    AWS_DEFAULT_ACL = None
+
+    # URL publique utilisée par le navigateur
+    AWS_S3_CUSTOM_DOMAIN = (
+        "jmhqhikhmdsjfdozmqaj.supabase.co/"
+        "storage/v1/object/public/"
+        + AWS_STORAGE_BUCKET_NAME
+    )
+
+    STORAGES = {
+        "default": {
+            "BACKEND": "storages.backends.s3.S3Storage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+
+    MEDIA_URL = f"https://{AWS_S3_CUSTOM_DOMAIN}/"
+
+else:
+
+    # Stockage local lorsque les clés Supabase
+    # ne sont pas disponibles
+    STORAGES = {
+        "default": {
+            "BACKEND": "django.core.files.storage.FileSystemStorage",
+        },
+        "staticfiles": {
+            "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        },
+    }
+
+    MEDIA_URL = "/media/"
+
+MEDIA_ROOT = BASE_DIR.parent / "media"
+
