@@ -524,6 +524,7 @@ def dashboard_programmes(request):
 
 
 @login_required
+@login_required
 def ajouter_programme(request):
 
     form = ProgrammeForm(
@@ -532,10 +533,14 @@ def ajouter_programme(request):
     )
 
     if form.is_valid():
-
-        form.save()
-
-        return redirect("dashboard_programmes")
+        try:
+            form.save()
+            return redirect("dashboard_programmes")
+        except Exception as e:
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.exception("ERREUR AJOUT PROGRAMME : %s", e)
+            raise
 
     return render(
         request,
@@ -545,8 +550,6 @@ def ajouter_programme(request):
             "titre": "Ajouter un programme"
         }
     )
-
-
 @login_required
 def modifier_programme(request,id):
 
