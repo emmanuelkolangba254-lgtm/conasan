@@ -323,26 +323,6 @@ class Documentation(models.Model):
 
     def __str__(self):
         return self.titre
-class Video(models.Model):
-
-    titre=models.CharField(max_length=200)
-
-    video=models.FileField(
-        upload_to="videos/"
-    )
-
-    miniature=models.ImageField(
-        upload_to="videos/",
-        blank=True,
-        null=True
-    )
-
-    description=models.TextField(blank=True)
-
-    date_creation=models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.titre
 class Apropos(models.Model):
 
     titre = models.CharField(max_length=200)
